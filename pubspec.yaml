@@ -20,6 +20,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/app-logo.png
+    - assets/icons/google.png
 
   fonts:
     - family: RobotoSlab

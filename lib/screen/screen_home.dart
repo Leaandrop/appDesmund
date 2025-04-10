@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/colors.dart';
-
 import '../core/routes.dart';
 import '../core/strings.dart';
 
@@ -10,46 +9,46 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.backgroundLight, // gris claro
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
           const Spacer(),
+
           // Logo
           Image.asset(
             'assets/icons/app-logo.png',
-            width: 200,
-            height: 200,
+            width: 300,
+            height: 300,
             fit: BoxFit.contain,
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
 
           // Nombre de la App
           Text(
-            AppStrings.appName, 
-              style: TextStyle(
+            AppStrings.appName,
+            style: const TextStyle(
               fontFamily: 'RobotoSlab',
-              color: AppColors.primary,
+              color: AppColors.textPrimary,
               fontSize: 40,
               fontWeight: FontWeight.bold,
             ),
           ),
 
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
 
           // Descripción
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 40),
             child: Text(
               AppStrings.splashTitle,
-              
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'RobotoSlab',
                 color: Colors.black87,
-                fontSize: 24,
+                fontSize: 20,
               ),
             ),
           ),
@@ -57,47 +56,47 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 30),
 
           // Botón "Comienza"
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {
               Navigator.of(context).pushReplacementNamed(Routes.login);
             },
-            style: ElevatedButton.styleFrom(
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 14),
               backgroundColor: AppColors.primary,
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
-                side: BorderSide(color: AppColors.secondary, width: 2),
               ),
+              side: const BorderSide(color: Colors.white, width: 2),
             ),
             child: const Text(
-              'COMIENZA',
+              'Comienza',
               style: TextStyle(
                 fontFamily: 'RobotoSlab',
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: 22,
               ),
             ),
           ),
 
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
 
           // Botón "Regístrate"
           TextButton(
             onPressed: () {
-              // TODO: Implementar lógica de registro
+              // TODO: implementar
             },
-            child: Text(
+            child: const Text(
               'Regístrate',
               style: TextStyle(
                 fontFamily: 'RobotoSlab',
-                color: AppColors.secondary,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                color: AppColors.textPrimary,
+                fontSize: 18,
+                fontWeight: FontWeight.normal,
               ),
             ),
           ),
 
-          const Spacer(), // Espaciado inferior
+          const Spacer(),
         ],
       ),
     );

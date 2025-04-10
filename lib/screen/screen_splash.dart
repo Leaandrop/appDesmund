@@ -14,59 +14,57 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 8), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacementNamed(Routes.home);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          // Espaciado superior
-          const Spacer(),
-
-          // Logo sin efectos
-          Image.asset(
-            'assets/icons/app-logo.png',
-            width: 180,
-            height: 180,
-            fit: BoxFit.contain,
-          ),
-
-          // Espaciado
-          const SizedBox(height: 20),
-
-          // Nombre de la App
-          Text(
-          'Desmund',
-          style: TextStyle(
-            fontFamily: 'RobotoSlab',
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
-          ),
-        ),
-
-
-          // Espaciado inferior antes del texto en la esquina
-          const Spacer(),
-
-          // Texto en la parte inferior derecha
-          Padding(
-            padding: const EdgeInsets.only(right: 20, bottom: 20),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                'D. Alejandro Jiménez Ramírez',
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 240, 9, 9),
-                  fontSize: 16,
-                  fontStyle: FontStyle.italic,
+          // Contenido centrado verticalmente
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Logo grande
+                Image.asset(
+                  'assets/icons/app-logo.png',
+                  width: 400, 
+                  height: 400,
+                  fit: BoxFit.contain,
                 ),
+                const SizedBox(height: 30),
+                // Nombre de la App
+                Text(
+                  'Desmund',
+                  style: const TextStyle(
+                    fontFamily: 'RobotoSlab',
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Autor abajo a la derecha
+          Positioned(
+            right: 20,
+            bottom: 20,
+            child: Text(
+              'D. Alejandro Jiménez Ramírez',
+              style: const TextStyle(
+                fontFamily: 'RobotoSlab',
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: AppColors.textPrimary,
               ),
             ),
           ),
